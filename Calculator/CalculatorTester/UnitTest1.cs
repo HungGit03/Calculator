@@ -54,7 +54,7 @@ namespace CalculatorTester
         //Liên kết data vs project
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
-                @".Data\TestData.csv", "TestData#csv",DataAccessMethod.Sequential)]
+                @".\Data\TestData.csv", "TestData#csv",DataAccessMethod.Sequential)]
         public void TestWithDataSource()
         {
             int a,b, expected, actual;
@@ -64,6 +64,19 @@ namespace CalculatorTester
             c = new Calculation(a, b);
             actual = c.Execute("+");
             Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
+                @".\Data\TestDataPower.csv", "TestDataPower#csv", DataAccessMethod.Sequential)]
+        public void TestPower()
+        {
+            int n;
+            double x, actual, excepted;
+            n = int.Parse(TestContext.DataRow[1].ToString());
+            x = double.Parse(TestContext.DataRow[0].ToString());
+            excepted = double.Parse(TestContext.DataRow[2].ToString());
+            actual = Calculation.Power(x, n);
+            Assert.AreEqual(excepted, actual);
         }
     }
 }

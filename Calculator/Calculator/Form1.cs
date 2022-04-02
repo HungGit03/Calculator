@@ -26,5 +26,14 @@ namespace Calculator
             Button bt = (Button)sender;
             textBox3.Text = cal.Execute(bt.Text.ToString()).ToString();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int n;
+            double x;
+            x = double.Parse(textBox1.Text.ToString());
+            n = int.Parse(textBox2.Text.ToString());
+            textBox3.Text = Calculation.Power(x, n).ToString();
+        }
     }
 }
